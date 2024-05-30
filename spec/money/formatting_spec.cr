@@ -39,7 +39,7 @@ describe Money::Formatting do
     end
 
     it "respects :subunit_to_unit currency property" do
-      Money.new(10_00, "BHD").format.should eq "ب.د1.000"
+      Money.new(10_00, "BHD").format.should eq "د.ب1.000"
     end
 
     it "does not display a decimal when :subunit_to_unit is 1" do
@@ -70,7 +70,7 @@ describe Money::Formatting do
 
       # Rupees
       one_thousand.call("INR").should eq "₹1,000.00"
-      one_thousand.call("NPR").should eq "₨1,000.00"
+      one_thousand.call("NPR").should eq "Rs.1,000.00"
       one_thousand.call("SCR").should eq "1,000.00 ₨"
       one_thousand.call("LKR").should eq "1,000.00 ₨"
 
@@ -110,7 +110,7 @@ describe Money::Formatting do
       end
 
       it "respects :subunit_to_unit currency property" do
-        Money.new(10_00, "BHD").format(no_cents: true).should eq "ب.د1"
+        Money.new(10_00, "BHD").format(no_cents: true).should eq "د.ب1"
       end
 
       it "inserts thousand separators if symbol contains decimal mark and :no_cents is true" do
@@ -194,7 +194,7 @@ describe Money::Formatting do
 
           # Rupees
           one.call("INR").should eq "₹1.00"
-          one.call("NPR").should eq "₨1.00"
+          one.call("NPR").should eq "Rs.1.00"
           one.call("SCR").should eq "1.00 ₨"
           one.call("LKR").should eq "1.00 ₨"
 
